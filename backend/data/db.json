@@ -1,0 +1,197 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "miguel.santos@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Miguel Santos",
+      "developerTypes": [
+        "Game Developer"
+      ],
+      "skills": [
+        "Unity",
+        "C#",
+        "Blender",
+        "Multiplayer Netcode"
+      ],
+      "bio": "Game dev for 6 years, shipped 3 mobile titles on Google Play. Loves tight physics and juicy game feel.",
+      "city": "Cebu City",
+      "experienceLevel": "Senior",
+      "hourlyRateMin": 700,
+      "hourlyRateMax": 1200,
+      "portfolioUrl": "https://miguelsantos.dev",
+      "githubUrl": "https://github.com/miguelsantosdev",
+      "avatarColor": "#F4A93B",
+      "createdAt": "2026-05-02T03:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "email": "andrea.cruz@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Andrea Cruz",
+      "developerTypes": [
+        "Web Developer"
+      ],
+      "skills": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "TypeScript"
+      ],
+      "bio": "Full-stack web developer building SaaS dashboards and internal tools for startups in APAC.",
+      "city": "Quezon City",
+      "experienceLevel": "Mid",
+      "hourlyRateMin": 500,
+      "hourlyRateMax": 900,
+      "portfolioUrl": "https://andreacruz.io",
+      "githubUrl": "https://github.com/andreacruz",
+      "avatarColor": "#1B7F79",
+      "createdAt": "2026-05-04T03:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "email": "jerome.bautista@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Jerome Bautista",
+      "developerTypes": [
+        "Mobile Developer"
+      ],
+      "skills": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "REST APIs"
+      ],
+      "bio": "Mobile developer specializing in Flutter apps end-to-end, from Figma handoff to Play Store release.",
+      "city": "Davao City",
+      "experienceLevel": "Mid",
+      "hourlyRateMin": 450,
+      "hourlyRateMax": 800,
+      "portfolioUrl": "https://jbautista.dev",
+      "githubUrl": "https://github.com/jbautista",
+      "avatarColor": "#4C9A6A",
+      "createdAt": "2026-05-06T03:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "email": "kristine.villanueva@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Kristine Villanueva",
+      "developerTypes": [
+        "Web Developer",
+        "Mobile Developer"
+      ],
+      "skills": [
+        "React Native",
+        "Next.js",
+        "GraphQL",
+        "Tailwind CSS"
+      ],
+      "bio": "I build the same product for web and mobile from one codebase where it makes sense, and split cleanly where it doesn't.",
+      "city": "Makati",
+      "experienceLevel": "Senior",
+      "hourlyRateMin": 800,
+      "hourlyRateMax": 1400,
+      "portfolioUrl": "https://kristinevillanueva.com",
+      "githubUrl": "https://github.com/kvillanueva",
+      "avatarColor": "#F4A93B",
+      "createdAt": "2026-05-09T03:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "email": "paolo.reyes@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Paolo Reyes",
+      "developerTypes": [
+        "Game Developer"
+      ],
+      "skills": [
+        "Unreal Engine",
+        "C++",
+        "Gameplay Systems",
+        "VFX"
+      ],
+      "bio": "Gameplay programmer who has worked on PC and console titles. Comfortable owning a system end to end.",
+      "city": "Manila",
+      "experienceLevel": "Senior",
+      "hourlyRateMin": 900,
+      "hourlyRateMax": 1600,
+      "portfolioUrl": "https://paoloreyes.games",
+      "githubUrl": "https://github.com/paoloreyes",
+      "avatarColor": "#1B7F79",
+      "createdAt": "2026-05-11T03:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "email": "angela.mercado@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Angela Mercado",
+      "developerTypes": [
+        "Mobile Developer"
+      ],
+      "skills": [
+        "Swift",
+        "SwiftUI",
+        "Kotlin",
+        "Jetpack Compose"
+      ],
+      "bio": "Native iOS and Android developer. I prefer native over cross-platform when performance or polish really matters.",
+      "city": "Iloilo City",
+      "experienceLevel": "Mid",
+      "hourlyRateMin": 550,
+      "hourlyRateMax": 950,
+      "portfolioUrl": "https://angelamercado.dev",
+      "githubUrl": "https://github.com/angelamercado",
+      "avatarColor": "#4C9A6A",
+      "createdAt": "2026-05-14T03:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "email": "ronald.delacruz@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Ronald dela Cruz",
+      "developerTypes": [
+        "Web Developer"
+      ],
+      "skills": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "Vue.js"
+      ],
+      "bio": "I build and maintain business web apps for SMEs, from inventory systems to booking platforms.",
+      "city": "Baguio City",
+      "experienceLevel": "Junior",
+      "hourlyRateMin": 300,
+      "hourlyRateMax": 550,
+      "portfolioUrl": "https://ronalddelacruz.dev",
+      "githubUrl": "https://github.com/rdelacruz",
+      "avatarColor": "#F4A93B",
+      "createdAt": "2026-05-17T03:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "email": "carla.aquino@example.com",
+      "passwordHash": "$2a$10$QXb1rmPLWO5.SmXhr3SmzuQYo6Cm2Kbpw1MG2tlBclEZIQNOkA4dC",
+      "fullName": "Carla Aquino",
+      "developerTypes": [
+        "Game Developer"
+      ],
+      "skills": [
+        "Godot",
+        "GDScript",
+        "Pixel Art",
+        "2D Animation"
+      ],
+      "bio": "Indie-minded 2D game developer. I've shipped narrative and puzzle games for itch.io and Steam.",
+      "city": "Pampanga",
+      "experienceLevel": "Junior",
+      "hourlyRateMin": 350,
+      "hourlyRateMax": 600,
+      "portfolioUrl": "https://carla-aquino.itch.io",
+      "githubUrl": "https://github.com/carlaaquino",
+      "avatarColor": "#1B7F79",
+      "createdAt": "2026-05-20T03:00:00.000Z"
+    }
+  ]
+}
