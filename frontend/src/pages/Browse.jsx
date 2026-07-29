@@ -32,7 +32,7 @@ export default function Browse() {
   }, [filters]);
 
   return (
-    <div className="container section" style={{ paddingTop: 48 }}>
+    <div className="container section page-content">
       <div className="section-heading">
         <div className="eyebrow">browse</div>
         <h2>Find your developer</h2>

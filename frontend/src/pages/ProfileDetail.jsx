@@ -59,13 +59,13 @@ export default function ProfileDetail() {
       : "Rate on request";
 
   return (
-    <div className="container section" style={{ paddingTop: 48 }}>
+    <div className="container section page-content">
       <Link to="/browse" className="eyebrow" style={{ marginBottom: 24 }}>
         back to browse
       </Link>
 
       <div className="profile-header">
-        <div className="avatar avatar-lg" style={{ background: freelancer.avatarColor || "#F4A93B" }}>
+        <div className="avatar avatar-lg" style={{ background: freelancer.avatarColor || "var(--mango)" }}>
           {initials(freelancer.fullName)}
         </div>
         <div>

@@ -13,7 +13,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <main style={{ flex: 1 }}>
+      <main className="app-main" style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/browse" element={<Browse />} />

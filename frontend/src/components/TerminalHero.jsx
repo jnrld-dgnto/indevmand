@@ -49,7 +49,7 @@ export default function TerminalHero() {
               1 match found in Cebu City
             </div>
             <div className="match-card">
-              <div className="match-avatar" style={{ background: "#F4A93B" }}>
+              <div className="match-avatar" style={{ background: "var(--mango)" }}>
                 MS
               </div>
               <div>

@@ -100,7 +100,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="container section" style={{ paddingTop: 48, maxWidth: 720 }}>
+    <div className="container container--narrow section page-content">
       <div className="section-heading">
         <div className="eyebrow">your profile</div>
         <h2>Edit your listing</h2>

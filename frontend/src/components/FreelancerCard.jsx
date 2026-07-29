@@ -25,7 +25,7 @@ export default function FreelancerCard({ freelancer }) {
   return (
     <Link to={`/developers/${freelancer.id}`} className="card freelancer-card">
       <div className="freelancer-card-top">
-        <div className="avatar" style={{ background: freelancer.avatarColor || "#F4A93B" }}>
+        <div className="avatar" style={{ background: freelancer.avatarColor || "var(--mango)" }}>
           {initials(freelancer.fullName)}
         </div>
         <div>

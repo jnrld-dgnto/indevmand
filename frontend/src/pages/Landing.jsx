@@ -1,268 +1,279 @@
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TerminalHero from "../components/TerminalHero";
-import Reveal from "../components/Reveal";
 
-const GAME_STACKS = ["Unity", "Unreal Engine", "Godot", "Phaser", "C#", "C++", "Lua"];
-const WEB_STACKS = ["React", "Node.js", "Laravel", "Vue", "Next.js", "Express", "PHP"];
-const MOBILE_STACKS = ["Flutter", "Swift", "Kotlin", "React Native", "Dart", "Java", "Xcode"];
+gsap.registerPlugin(ScrollTrigger);
+
+const CATEGORIES = [
+  {
+    name: "Game development",
+    slug: "Game+Developer",
+    accent: "game",
+    description: "Gameplay systems, multiplayer, mobile titles, and PC builds.",
+    stack: ["Unity", "Unreal", "Godot", "C#"],
+  },
+  {
+    name: "Web development",
+    slug: "Web+Developer",
+    accent: "web",
+    description: "Products, dashboards, storefronts, and internal tools that ship.",
+    stack: ["React", "Node.js", "Laravel", "Next.js"],
+  },
+  {
+    name: "Mobile development",
+    slug: "Mobile+Developer",
+    accent: "mobile",
+    description: "Native and cross-platform apps for the next generation of users.",
+    stack: ["Flutter", "Swift", "Kotlin", "React Native"],
+  },
+];
+
+const STEPS = [
+  {
+    number: "01",
+    title: "Create your profile",
+    text: "Share your stack, rate range, city, and the kind of work you do best.",
+  },
+  {
+    number: "02",
+    title: "Search with intent",
+    text: "Filter the directory by developer type, skills, and location across the Philippines.",
+  },
+  {
+    number: "03",
+    title: "Connect directly",
+    text: "Reach the right developer through their public profile and portfolio links.",
+  },
+];
+
+const STACKS = [
+  "React",
+  "Unity",
+  "Flutter",
+  "Node.js",
+  "Laravel",
+  "Swift",
+  "Unreal Engine",
+  "Kotlin",
+  "Godot",
+  "Next.js",
+];
 
 export default function Landing() {
+  const pageRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+
+    const context = gsap.context(() => {
+      gsap.from(".landing-hero-copy > *", {
+        opacity: 0,
+        y: 28,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: "power3.out",
+      });
+
+      gsap.from(".landing-hero-art", {
+        opacity: 0,
+        scale: 0.92,
+        duration: 1.1,
+        delay: 0.18,
+        ease: "power3.out",
+      });
+
+      gsap.utils.toArray(".landing-reveal-line").forEach((line) => {
+        gsap.fromTo(
+          line,
+          { scaleX: 0, transformOrigin: "left center" },
+          {
+            scaleX: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: line,
+              start: "top 84%",
+              end: "top 42%",
+              scrub: true,
+            },
+          },
+        );
+      });
+
+      if (window.innerWidth > 860) {
+        ScrollTrigger.create({
+          trigger: ".landing-process",
+          start: "top 120px",
+          end: "bottom 70%",
+          pin: ".landing-process-heading",
+          pinSpacing: false,
+        });
+      }
+    }, pageRef);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <>
-      <section className="section section-dark" style={{ paddingTop: 72 }}>
-        <div className="container">
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1.1fr 1fr",
-              gap: 56,
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <div className="eyebrow" style={{ color: "var(--mango)" }}>
-                built for Filipino developers
-              </div>
-              <h1 style={{ fontSize: 46, color: "var(--paper-raised)", lineHeight: 1.12, marginBottom: 20 }}>
-                Clients search by stack.
-                <br />
-                You show up as the match.
-              </h1>
-              <p style={{ fontSize: 17, color: "var(--text-on-ink-dim)", maxWidth: 480, marginBottom: 32 }}>
-                Indevmand is a freelance platform built only for game, web, and mobile
-                developers based in the Philippines — no design gigs, no copywriting,
-                no noise. Just developers and the clients looking for them.
-              </p>
-              <div style={{ display: "flex", gap: 14 }}>
-                <Link to="/browse" className="btn btn-primary">
-                  Browse developers
-                </Link>
-                <Link to="/signup" className="btn btn-secondary">
-                  Join as a developer
-                </Link>
-              </div>
-            </div>
-            <TerminalHero />
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-dark" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="categories-grid">
-            <Reveal delay={0}>
-              <div className="category-card category-card--game">
-                <div className="kicker">01 · game-dev</div>
-                <h3>Game Developers</h3>
-                <p>Unity, Unreal, Godot — mobile titles, PC builds, and gameplay systems.</p>
-                <Link to="/browse?type=Game+Developer" className="btn btn-secondary">
-                  View game devs
-                </Link>
-              </div>
-            </Reveal>
-            <Reveal delay={1}>
-              <div className="category-card category-card--web">
-                <div className="kicker">02 · web-dev</div>
-                <h3>Web Developers</h3>
-                <p>React, Laravel, Node — dashboards, storefronts, and internal tools.</p>
-                <Link to="/browse?type=Web+Developer" className="btn btn-secondary">
-                  View web devs
-                </Link>
-              </div>
-            </Reveal>
-            <Reveal delay={2}>
-              <div className="category-card category-card--mobile">
-                <div className="kicker">03 · mobile-dev</div>
-                <h3>Mobile Developers</h3>
-                <p>Flutter, Swift, Kotlin — native and cross-platform app builds.</p>
-                <Link to="/browse?type=Mobile+Developer" className="btn btn-secondary">
-                  View mobile devs
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt">
-        <div className="container">
-          <Reveal>
-            <div className="section-heading">
-              <div className="eyebrow">how it works</div>
-              <h2>Two sides, one directory.</h2>
-              <p>No bidding wars, no algorithm burying your profile. Just a clean, searchable list.</p>
-            </div>
-          </Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            <Reveal delay={0}>
-              <div className="card" style={{ height: "100%" }}>
-                <div className="step-num">01</div>
-                <div className="eyebrow">for developers</div>
-                <h3 style={{ fontSize: 19, marginBottom: 8 }}>Create your profile</h3>
-                <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>
-                  List your stack, your rate range, and your city. Takes about three minutes.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={1}>
-              <div className="card" style={{ height: "100%" }}>
-                <div className="step-num">02</div>
-                <div className="eyebrow">for clients</div>
-                <h3 style={{ fontSize: 19, marginBottom: 8 }}>Search by stack and city</h3>
-                <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>
-                  Filter by developer type, skills, and location across the Philippines.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={2}>
-              <div className="card" style={{ height: "100%" }}>
-                <div className="step-num">03</div>
-                <div className="eyebrow">for everyone</div>
-                <h3 style={{ fontSize: 19, marginBottom: 8 }}>Connect directly</h3>
-                <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>
-                  Reach out through the contact links on a developer's public profile.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-dark">
-        <div className="container">
-          <Reveal>
-            <div className="section-heading">
-              <div className="eyebrow" style={{ color: "var(--mango)" }}>stack coverage</div>
-              <h2 style={{ color: "var(--paper-raised)" }}>Every discipline, one search away.</h2>
-              <p>Clients filter by what they need. Developers list what they know. No mismatch.</p>
-            </div>
-          </Reveal>
-          <div className="stack-grid">
-            <Reveal delay={0}>
-              <div className="stack-column">
-                <h3 style={{ color: "var(--paper-raised)" }}>
-                  <span className="dot" style={{ background: "var(--mango)" }} />
-                  Game Development
-                </h3>
-                <ul className="stack-list">
-                  {GAME_STACKS.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={1}>
-              <div className="stack-column">
-                <h3 style={{ color: "var(--paper-raised)" }}>
-                  <span className="dot" style={{ background: "var(--teal)" }} />
-                  Web Development
-                </h3>
-                <ul className="stack-list">
-                  {WEB_STACKS.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={2}>
-              <div className="stack-column">
-                <h3 style={{ color: "var(--paper-raised)" }}>
-                  <span className="dot" style={{ background: "var(--moss)" }} />
-                  Mobile Development
-                </h3>
-                <ul className="stack-list">
-                  {MOBILE_STACKS.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <Reveal>
-            <div className="section-heading">
-              <div className="eyebrow">why this exists</div>
-              <h2>No algorithms. No auctions.</h2>
-              <p>Indevmand works differently from the platforms you're used to.</p>
-            </div>
-          </Reveal>
-          <div className="comparison-grid">
-            <Reveal delay={0}>
-              <div className="comparison-col">
-                <h3>Indevmand</h3>
-                <ul className="comparison-list">
-                  <li>
-                    <span className="marker marker--yes">+</span>
-                    <span>Philippines-only developers — every profile is local</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--yes">+</span>
-                    <span>Filter by game, web, or mobile — no unrelated noise</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--yes">+</span>
-                    <span>Direct contact through profile links — no middleman</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--yes">+</span>
-                    <span>Free to list, free to browse — no commissions</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--yes">+</span>
-                    <span>Your profile stays visible — no bidding to stay relevant</span>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={1}>
-              <div className="comparison-col comparison-col--other">
-                <h3 style={{ color: "var(--text-secondary)" }}>Generic platforms</h3>
-                <ul className="comparison-list">
-                  <li>
-                    <span className="marker marker--no">-</span>
-                    <span>Global pool — hard to find local talent</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--no">-</span>
-                    <span>Every category mixed together — designers, writers, devs</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--no">-</span>
-                    <span>Communication gated behind platform messaging</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--no">-</span>
-                    <span>Service fees on both sides — 10-20% cuts</span>
-                  </li>
-                  <li>
-                    <span className="marker marker--no">-</span>
-                    <span>Bid on every project or disappear from search</span>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-dark">
-        <div className="container" style={{ textAlign: "center" }}>
-          <Reveal>
-            <div className="eyebrow" style={{ justifyContent: "center", color: "var(--mango)" }}>get started</div>
-            <h2 style={{ fontSize: 34, color: "var(--paper-raised)", marginBottom: 14 }}>Ready to be found?</h2>
-            <p style={{ color: "var(--text-on-ink-dim)", marginBottom: 32, fontSize: 17 }}>
-              Set up your developer profile in a few minutes.
+    <div className="landing-page" ref={pageRef}>
+      <section className="landing-section landing-hero">
+        <div className="container landing-hero-grid">
+          <div className="landing-hero-copy">
+            <p className="landing-kicker">A focused directory for Filipino developers</p>
+            <h1>
+              Find the people who <em>build what&apos;s next.</em>
+            </h1>
+            <p className="landing-hero-lede">
+              Indevmand connects clients with game, web, and mobile developers based in the
+              Philippines. Search by the stack, city, and experience you actually need.
             </p>
-            <Link to="/signup" className="btn btn-primary">
-              Create your profile
-            </Link>
-          </Reveal>
+            <div className="landing-hero-actions">
+              <Link to="/browse" className="btn btn-primary">
+                Browse developers <span aria-hidden="true">↗</span>
+              </Link>
+              <Link to="/signup" className="btn btn-outline">
+                Create a profile
+              </Link>
+            </div>
+            <div className="landing-proof-row">
+              <span className="landing-proof-marker" aria-hidden="true" />
+              <span>Game / web / mobile</span>
+              <span>Philippines only</span>
+            </div>
+          </div>
+
+          <div className="landing-hero-art">
+            <div className="landing-art-grid" aria-hidden="true" />
+            <div className="landing-terminal">
+              <TerminalHero />
+            </div>
+            <p className="landing-art-caption">
+              <span className="landing-art-status" aria-hidden="true" />
+              Search by real stack and city
+            </p>
+          </div>
         </div>
       </section>
-    </>
+
+      <section className="landing-section landing-category-section">
+        <div className="container">
+          <div className="landing-section-heading">
+            <div>
+              <p className="landing-kicker">Built around how developers work</p>
+              <h2>One directory. Three disciplines.</h2>
+            </div>
+            <p>
+              Less noise means better matches. Explore specialists by the tools and platforms
+              they know best.
+            </p>
+          </div>
+
+          <div className="landing-category-grid">
+            {CATEGORIES.map((category) => (
+              <article className={`landing-category-card landing-category-card--${category.accent}`} key={category.name}>
+                <div className="landing-category-topline">
+                  <span className="landing-accent-dot" aria-hidden="true" />
+                  <span>{category.accent}</span>
+                </div>
+                <h3>{category.name}</h3>
+                <p>{category.description}</p>
+                <div className="landing-stack-tags">
+                  {category.stack.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+                <Link to={`/browse?type=${category.slug}`} className="landing-text-link">
+                  Explore {category.accent} developers <span aria-hidden="true">↗</span>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="landing-section landing-process">
+        <div className="container landing-process-grid">
+          <div className="landing-process-heading">
+            <p className="landing-kicker">Make the next move clear</p>
+            <h2>From first search to the right conversation.</h2>
+            <p>
+              No bidding wars. No opaque ranking. Just a clear path from a useful profile to a
+              direct connection.
+            </p>
+          </div>
+          <div className="landing-steps">
+            {STEPS.map((step, index) => (
+              <article className="landing-step" key={step.number}>
+                <span className="landing-step-number">{step.number}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+                {index < STEPS.length - 1 && <span className="landing-step-arrow" aria-hidden="true">↓</span>}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="landing-section landing-stack-section">
+        <div className="container">
+          <div className="landing-section-heading landing-section-heading--stack">
+            <div>
+              <p className="landing-kicker">Search the language of the work</p>
+              <h2>Your stack is the starting point.</h2>
+            </div>
+            <p>
+              From emerging tools to proven frameworks, browse people who already speak your
+              technical language.
+            </p>
+          </div>
+          <div className="landing-reveal-line" aria-hidden="true" />
+          <div className="landing-stack-marquee" aria-label="Popular technologies">
+            <div className="landing-stack-track">
+              {[...STACKS, ...STACKS].map((stack, index) => (
+                <span key={`${stack}-${index}`}>{stack}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="landing-section landing-difference-section">
+        <div className="container landing-difference-grid">
+          <div>
+            <p className="landing-kicker">A better signal</p>
+            <h2>Good work should be easier to find.</h2>
+          </div>
+          <div className="landing-difference-copy">
+            <p>
+              Indevmand keeps the directory intentionally narrow: Filipino developers, clear
+              disciplines, direct contact. That gives clients a better signal and gives
+              developers a profile that can stay visible without bidding for attention.
+            </p>
+            <div className="landing-difference-list">
+              <span>Local by default</span>
+              <span>Searchable by stack</span>
+              <span>Direct by design</span>
+            </div>
+            <Link to="/browse" className="landing-text-link">
+              See the full directory <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="landing-section landing-cta-section">
+        <div className="container landing-cta">
+          <p className="landing-kicker">The next project starts here</p>
+          <h2>Ready to be found?</h2>
+          <p>Set up a profile in a few minutes and make your work easier to discover.</p>
+          <Link to="/signup" className="btn btn-primary">
+            Create your developer profile <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }
